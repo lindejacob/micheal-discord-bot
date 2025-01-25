@@ -12,6 +12,16 @@ async def micheal_evangeliet(interaction: discord.Interaction):
     await interaction.user.send(message)
     await interaction.response.send_message("En brevdue er sendt afsted til dig", ephemeral=True)
 
+@app_commands.command(name="micheal_github", description="Ændre i micheals syntax")
+async def micheal_github(interaction: discord.Interaction):
+    message = (
+        f"{interaction.user.mention} **En brevdue landede ligså fint i dit vindue, duen havde en note om foden. Du foldede noten ud og der stod:** \n\n"
+        "Github: https://github.com/lindejacob/micheal-discord-bot"
+    )
+    await interaction.user.send(message)
+    await interaction.response.send_message("En brevdue er sendt afsted til dig", ephemeral=True)
+
+
 @app_commands.command(name="join_opkald", description="Få botten til at joine opkaldet")
 async def join_opkald(interaction: discord.Interaction):
     channel = interaction.user.voice.channel

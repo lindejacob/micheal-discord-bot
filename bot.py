@@ -5,7 +5,7 @@ import asyncio
 import datetime
 import os
 from scripts.timeEvents import update_status, send_micheal_message
-from scripts.commands import micheal_evangeliet, join_opkald
+from scripts.commands import micheal_evangeliet, micheal_github
 
 load_dotenv()
 TOKEN = os.getenv("DISCORD_TOKEN").replace("{", "").replace("}", "")
@@ -22,7 +22,7 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 async def on_ready():
     print(f'Logged in as {bot.user}!')
     bot.tree.add_command(micheal_evangeliet)
-    bot.tree.add_command(join_opkald)
+    bot.tree.add_command(micheal_github)
     try:
         await bot.tree.sync()
         print("Commands synced successfully.")
