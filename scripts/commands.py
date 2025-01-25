@@ -1,8 +1,6 @@
 import discord
 from discord import app_commands
 
-GUILD_ID = 1332713581845938186  # Use the integer ID directly
-
 @app_commands.command(name="micheal_evangeliet", description="Modtag det helligste evangelie i biblen!")
 async def micheal_evangeliet(interaction: discord.Interaction):
     message = (

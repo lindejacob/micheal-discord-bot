@@ -30,10 +30,19 @@ async def on_ready():
         print("Missing permissions to sync commands.")
     bot.loop.create_task(main_loop())
 
+@bot.command()
+async def sync_commands(ctx):
+    try:
+        await ctx.bot.tree.sync(guild=ctx.guild)
+        await ctx.send("Commands synced successfully for this guild.")
+    except discord.errors.Forbidden:
+        await ctx.send("Missing permissions to sync commands.")
+
 @bot.event
 async def main_loop():
     while not bot.is_closed():
         await send_micheal_message(CHANNEL_ID, ROLE_ID, bot, GUILD_ID)
         await update_status(bot)
         await asyncio.sleep(60)
+
 bot.run(TOKEN)
