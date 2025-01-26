@@ -1,7 +1,5 @@
 import discord
-from discord import app_commands
 
-@app_commands.command(name="micheal_evangeliet", description="Modtag det helligste evangelie i biblen!")
 async def micheal_evangeliet(interaction: discord.Interaction):
     message = (
         f"{interaction.user.mention} **En brevdue fløj ind i dit vindue, duen blev kvæstet men brevet var ikke engang krøllet. Du åbnede brevet, på de hellige tekster inde i brevet stod der:** \n\n"
@@ -10,7 +8,6 @@ async def micheal_evangeliet(interaction: discord.Interaction):
     await interaction.user.send(message)
     await interaction.response.send_message("En brevdue er sendt afsted til dig", ephemeral=True)
 
-@app_commands.command(name="micheal_github", description="Ændre i micheals syntax")
 async def micheal_github(interaction: discord.Interaction):
     message = (
         f"{interaction.user.mention} **En brevdue landede ligså fint i dit vindue, duen havde en note om foden. Du foldede noten ud og der stod:** \n\n"
@@ -19,8 +16,6 @@ async def micheal_github(interaction: discord.Interaction):
     await interaction.user.send(message)
     await interaction.response.send_message("En brevdue er sendt afsted til dig", ephemeral=True)
 
-
-@app_commands.command(name="join_opkald", description="Få botten til at joine opkaldet")
 async def join_opkald(interaction: discord.Interaction):
     channel = interaction.user.voice.channel
     await channel.connect()

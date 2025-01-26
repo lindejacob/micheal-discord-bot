@@ -5,7 +5,7 @@ import asyncio
 import datetime
 import os
 from scripts.timeEvents import update_status, send_micheal_message
-from scripts.commands import micheal_evangeliet, micheal_github
+from scripts.commands import micheal_evangeliet, micheal_github, join_opkald  # Import commands
 
 load_dotenv()
 TOKEN = os.getenv("DISCORD_TOKEN").replace("{", "").replace("}", "")
@@ -21,24 +21,13 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 
 # test
 @bot.event
-async def on_ready(ctx):
+async def on_ready():
     print(f'Logged in as {bot.user}!')
-    bot.tree.add_command(micheal_evangeliet)
-    bot.tree.add_command(micheal_github)
-    try:
-        await bot.tree.sync()
-        print("Commands synced successfully.")
-    except discord.errors.Forbidden:
-        print("Missing permissions to sync commands.")
+    bot.tree.add_command(discord.app_commands.Command(name="micheal_evangeliet", description="Modtag det helligste evangelie i biblen!", callback=micheal_evangeliet))
+    bot.tree.add_command(discord.app_commands.Command(name="micheal_github", description="Ændre i micheals syntax", callback=micheal_github))
+    await bot.tree.sync() 
     bot.loop.create_task(main_loop())
 
-@bot.command()
-async def sync_commands(ctx):
-    try:
-        await ctx.bot.tree.sync(guild=ctx.guild)
-        await ctx.send("Commands synced successfully for this guild.")
-    except discord.errors.Forbidden:
-        await ctx.send("Missing permissions to sync commands.")
 
 @bot.event
 async def main_loop():
