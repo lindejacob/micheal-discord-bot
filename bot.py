@@ -18,8 +18,10 @@ intents.message_content = True
 intents.voice_states = True  # Enable voice state intents
 bot = commands.Bot(command_prefix="!", intents=intents)
 
+
+# test
 @bot.event
-async def on_ready():
+async def on_ready(ctx):
     print(f'Logged in as {bot.user}!')
     bot.tree.add_command(micheal_evangeliet)
     bot.tree.add_command(micheal_github)
