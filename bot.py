@@ -19,7 +19,6 @@ intents.voice_states = True  # Enable voice state intents
 bot = commands.Bot(command_prefix="!", intents=intents)
 
 
-# test
 @bot.event
 async def on_ready():
     print(f'Logged in as {bot.user}!')
